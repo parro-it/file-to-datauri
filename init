@@ -1,0 +1,29 @@
+mv project.sublime-project file-to-datauri.sublime-project &&
+
+json -I -f package.json -e 'this.license="MIT"'
+
+joe sublimetext node > .gitignore &&
+
+npm install &&
+npm test &&
+npm run build &&
+npm run check &&
+
+
+gh re --new file-to-datauri &&
+
+git init &&
+git remote add origin https://github.com/parro-it/file-to-datauri.git &&
+
+licejs mit | head -n 3  | sed 's/$/\n/' >> readme.md &&
+licejs mit > license &&
+
+joe sublimetext node > .gitignore &&
+echo '\ndist\ndist_test\nprivate\n' >> .gitignore &&
+
+git add .  &&
+git commit -m "project skeleton" &&
+git push --set-upstream origin master &&
+
+subl file-to-datauri.sublime-project
+
